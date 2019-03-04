@@ -1,0 +1,50 @@
+Grammar 
+=>Goal ::= MainClass ( ClassDeclaration )* <EOF> 
+
+=>MainClass ::= "class" Identifier "{" "public" "static" "void" "main" "(" "String" "[" "]" Identifier ")" "{" (Statement)* "}" "}" 
+
+=>ClassDeclaration ::= "class" Identifier ( "extends" Identifier )? "{" ( VarDeclaration )* ( ConstructorDeclaration )* ( MethodDeclaration )* "}" 
+
+=>VarDeclaration ::= Type Identifier ";" 
+ConstructorDeclaration::= Identifier 
+"(" ( Type Identifier ( "," Type Identifier )*)? ")" 
+"{" ( VarDeclaration )* ( Statement )* "}" 
+
+=>MethodDeclaration ::= ("public" | "private" | "protected") Type Identifier 
+"(" ( Type Identifier ( "," Type Identifier )*)? ")" 
+"{" ( VarDeclaration )* ( Statement )* "return" Expression ";" "}"
+////////
+ =>Type ::=  int arr | "float" arr|"String" arr | "char" arr | "boolean" arr
+ =>Arr::="[""]"|nothing
+/////////////
+=>Statement::=normal_stament|if_statment|while_statment|print_statment|declare_stament
+=>normal_stament::= "{" ( Statement )* "}" 
+=>print_statment::="system.out.println" "(" Expression ")" ";"
+=>while_statment::= "while" "(" Expression ")" (Statement)* 
+=>if_statment::= "if" "(" Expression ")" (statement)* cont
+=>cont::= "else" (Statement)* | nothing
+=>declare_stament::=X Expression ";"
+=>X::= Identifier Z  "=" Expression 
+=>Z::=  "[" Expression "]" | nothing
+=>Identifier ::= <IDENTIFIER>
+=>EXpression::=operations |  AvExpression | accesobject | createbject | function | accesthis
+=>accesthis::=this . EXpression
+=>createbject::="new" Identifier "(" (EXpression ( "," EXpression)*)? ")" accessfunction
+=>accessfunction::=.Function | nothing
+=>Function::= Identifier"(" (EXpression ( "," EXpression)*)? "")
+=>operatons::=  AvExpression sign AvExpression
+=>AvExpression::=<INTEGER_LITERAL>|<FLOAT_LITERAL>|"true"|"false"|STRING | Identifier 
+=>sign::=(">" | "<" | "<=" | ">=" |"+" | "-" | "*" | "/" | "&&" | "||" | "==" | "!=")
+=>acceslengght::=Identifer.lenght
+=>accesitem::=Identifer "[" Expression"]" 
+////////////
+=>accesobject::= Identifier. Identifier"("(EXpression (","EXpression)*)?")
+//////////
+=>makearray::= "new" ("int" | "float" | "String" | "char" | "boolean" ) "["Avabltoken1"]" 
+//////////
+notExpression::=!(EXpression)
+
+
+
+
+
